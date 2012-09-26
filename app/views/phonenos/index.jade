@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block main
+  h1 Phoneno
+
+block content
+  each phoneno in phonenos
+    .phoneno
+      a.title(href='/phonenos/'+phoneno._id, title=phoneno.mobileno) #{phoneno.mobileno}
+      p=phoneno.body
+      .author
+        span= formatDate(phoneno.createdAt, "%b %d, %Y at %I:%M %p")
+        span &nbsp;| Author :&nbsp;
+        a(href="/users/"+phoneno.user._id)=phoneno.user.name
+        | &nbsp;|&nbsp;
+        
+
+  if (pages > 1)
+    .pagination
+      ul
+        != createPagination(pages, page)

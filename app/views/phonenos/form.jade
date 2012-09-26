@@ -1,0 +1,27 @@
+extends ../layouts/default
+
+block content
+  - var action = '/phonenos'
+  if (!phoneno.isNew)
+    - action += '/'+phoneno.id
+
+  if (typeof errors !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert", href="javascript:void(0)") x
+      ul
+        each error in errors
+          li= error.type
+
+  form.form-horizontal(method="post", action=action)
+    if (!phoneno.isNew)
+      input(type="hidden", name="_method", value="PUT")
+
+    .control-group
+      label.control-label(for='mobileno') Mobile number
+      .controls
+        input#title.input-xlarge(type='text', name="mobileno", value=phoneno.mobileno, placeholder='enter 10 digit mobile number')
+
+    .form-actions
+      button.btn.btn-primary(type='submit') Save changes
+      &nbsp;
+      a.btn(href='/phonenos', title="cancel") Cancel

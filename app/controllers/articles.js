@@ -76,7 +76,7 @@ exports.show = function(req, res){
 exports.destroy = function(req, res){
   var article = req.article
   article.remove(function(err){
-    // req.flash('notice', 'Deleted successfully')
+    //req.flash('notice', 'Deleted successfully')
     res.redirect('/articles')
   })
 }

@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block main
+  h1= phoneno.mobileno
+
+block content
+  p.author
+    span Author :&nbsp;
+    a(href="/users/"+phoneno.user._id)=phoneno.user.name
+  .date= formatDate(phoneno.createdAt, "%b %d, %Y at %I:%M %p")
+  
+
+  p
+    br
+    form.center.form-inline.confirm(action="/phonenos/"+phoneno.id, method="post")
+      a.btn(href='/phonenos/'+phoneno._id+'/edit', title="edit") Edit
+      &nbsp;&nbsp;
+      input(type="hidden", name="_method", value="DELETE")
+      button.btn.btn-danger(type="submit") delete
+
+ 

@@ -37,3 +37,14 @@ exports.article = {
       next()
     }
 }
+
+exports.phoneno = {
+    hasAuthorization : function (req, res, next) {
+      if (req.phoneno.user.id != req.user.id) {
+        console.log('req.phoneno.user.id ' + req.phoneno.user.id +'req.user.id' + req.user.id)
+        return res.redirect('/phonenos/')
+      }
+      next()
+    }
+}
+
